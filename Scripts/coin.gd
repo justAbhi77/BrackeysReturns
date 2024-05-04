@@ -2,13 +2,11 @@ extends Area2D
 
 class_name coin
 
-func _ready():
-	pass
+@onready var game_manager:gamemanager = %GameManager
 
-func _process(_delta):
-	pass
-
+@onready var Animation_Player = $AnimationPlayer
 
 func _on_body_entered(_body:Node2D):
-	print("+1 coin")
-	queue_free()
+	game_manager.add_point()
+	Animation_Player.play("pickup")
+
